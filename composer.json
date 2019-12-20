@@ -1,0 +1,21 @@
+{
+  "name": "leftsky/eth_php",
+  "description": "以太坊便捷交易。php easy ethereum.",
+  "authors": [
+    {
+      "name": "leftsky",
+      "email": "leftsky@vip.qq.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "myxtype/ethereum-client": "dev-master",
+    "sc0vu/web3.php": "dev-master",
+    "web3p/ethereum-tx": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "leftsky\\": "src/"
+    }
+  }
+}
