@@ -10,7 +10,7 @@
   "minimum-stability": "dev",
   "require": {
     "myxtype/ethereum-client": "dev-master",
-    "sc0vu/web3.php": "dev-master",
+    "sc0vu/web3.php": "^0.1.4",
     "web3p/ethereum-tx": "dev-master"
   },
   "autoload": {
