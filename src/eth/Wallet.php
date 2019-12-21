@@ -64,11 +64,11 @@ class Wallet
         $this->etherscan_domain = isset($config['etherscan_domain']) ?
             $config['etherscan_domain'] : $this->etherscan_domain;
         $this->etherscan_key = isset($config['etherscan_key']) ?
-            $config['etherscan_key'] : $this->etherscan_domain;
+            $config['etherscan_key'] : $this->etherscan_key;
         $this->infura_endpoint = isset($config['infura_endpoint']) ?
-            $config['infura_endpoint'] : $this->etherscan_domain;
+            $config['infura_endpoint'] : $this->infura_endpoint;
         $this->infura_secret = isset($config['infura_secret']) ?
-            $config['infura_secret'] : $this->etherscan_domain;
+            $config['infura_secret'] : $this->infura_secret;
         return $this;
     }
 
@@ -113,7 +113,7 @@ class Wallet
         return $result['result'] ?? 0;
     }
 
-    public function balance($contact = null, $platform = 'etherscan')
+    public function balance($contact = null, $platform = 'infura')
     {
         if ($contact) {
             return $this->balance_erc20_etherscan($this->address, $contact);
