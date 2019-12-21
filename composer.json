@@ -11,7 +11,7 @@
   "require": {
     "myxtype/ethereum-client": "dev-master",
     "sc0vu/web3.php": "^0.1.4",
-    "web3p/ethereum-tx": "dev-master"
+    "web3p/ethereum-tx": "^0.4.0"
   },
   "autoload": {
     "psr-4": {
