@@ -113,7 +113,7 @@ class Wallet
         return $result['result'] ?? 0;
     }
 
-    public function balance($contact = null, $platform = 'infura')
+    public function balance($contact = null, $platform = 'etherscan')
     {
         if ($contact) {
             return $this->balance_erc20_etherscan($this->address, $contact);
