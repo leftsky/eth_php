@@ -61,10 +61,15 @@ class Wallet
      */
     public function config($config)
     {
-        $this->etherscan_domain = isset($config['etherscan_domain']) ?? $this->etherscan_domain;
-        $this->etherscan_key = isset($config['etherscan_key']) ?? $this->etherscan_key;
-        $this->infura_endpoint = isset($config['infura_endpoint']) ?? $this->infura_endpoint;
-        $this->infura_secret = isset($config['infura_secret']) ?? $this->infura_secret;
+        $this->etherscan_domain = isset($config['etherscan_domain']) ?
+            $config['etherscan_domain'] : $this->etherscan_domain;
+        $this->etherscan_key = isset($config['etherscan_key']) ?
+            $config['etherscan_key'] : $this->etherscan_domain;
+        $this->infura_endpoint = isset($config['infura_endpoint']) ?
+            $config['infura_endpoint'] : $this->etherscan_domain;
+        $this->infura_secret = isset($config['infura_secret']) ?
+            $config['infura_secret'] : $this->etherscan_domain;
+        return $this;
     }
 
     /**
