@@ -7,6 +7,7 @@
       "email": "leftsky@vip.qq.com"
     }
   ],
+  "license": "MIT",
   "minimum-stability": "dev",
   "require": {
     "myxtype/ethereum-client": "dev-master",
