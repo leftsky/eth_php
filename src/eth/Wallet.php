@@ -25,7 +25,9 @@ class Wallet
     private $result;
     private $infura_endpoint = 'https://mainnet.infura.io/v3/6a68fac988fb4d899aeeb8d62e037d59';
     private $infura_secret = '84277eb271c348c98a7c88000c0fccbc';
-    private $etherscan_domain = 'http://api-cn.etherscan.com/api?';
+    private $etherscan_domain;
+    private $etherscan_domain_cn = 'http://api-cn.etherscan.com/api?';
+    private $etherscan_domain_en = 'https://api.etherscan.io/api?';
     private $etherscan_key = 'yourapikey';
 
     /**
@@ -45,7 +47,24 @@ class Wallet
         $this->prv_key = $keyPair->getPrivate()->toString(16, 2);
         $this->pub_key = $keyPair->getPublic()->encode('hex');
         $this->address = '0x' . substr(Keccak::hash(substr(hex2bin($this->pub_key), 1), 256), 24);
+        $this->etherscan_domain = $this->etherscan_domain_en;
         return $this;
+    }
+
+    /**
+     * 配置第三方参数
+     * etherscan_domain etherescan 的接口域名
+     * etherscan_key etherescan 的接口密钥
+     * infura_endpoint infura的接入点
+     * infura_secret infura的接入密钥
+     * @param $config
+     */
+    public function config($config)
+    {
+        $this->etherscan_domain = isset($config['etherscan_domain']) ?? $this->etherscan_domain;
+        $this->etherscan_key = isset($config['etherscan_key']) ?? $this->etherscan_key;
+        $this->infura_endpoint = isset($config['infura_endpoint']) ?? $this->infura_endpoint;
+        $this->infura_secret = isset($config['infura_secret']) ?? $this->infura_secret;
     }
 
     /**
