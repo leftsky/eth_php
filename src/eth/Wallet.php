@@ -15,7 +15,7 @@ use Web3\RequestManagers\HttpRequestManager;
 use Web3\Utils;
 use Web3\Web3;
 use Web3p\EthereumTx\Transaction;
-use xtype\Ethereum\Client as EthereumClient;
+use xtype\Ethereum\Client;
 
 class Wallet
 {
@@ -102,7 +102,7 @@ class Wallet
      * etherscan 查询 ETH 余额
      * @param string $address 需要查询的地址
      * @param string $contract 代币合约地址
-     * @return int ETH 余额 （单位wei)
+     * @return int 代币余额
      */
     private function balance_erc20_etherscan($address, $contract)
     {
@@ -113,12 +113,14 @@ class Wallet
         return $result['result'] ?? 0;
     }
 
-    public function balance($contact = null, $platform = 'etherscan')
+    public function balance($contact = null, $platform = 'infura')
     {
         if ($contact) {
             return $this->balance_erc20_etherscan($this->address, $contact);
         } else {
-            return $this->balance_etherscan($this->address);
+            return $platform == 'etherscan'
+                ? $this->balance_etherscan($this->address)
+                : $this->balance_infura($this->address);
         }
     }
 
@@ -173,7 +175,7 @@ class Wallet
         $to_address = str_replace("0x", "", $address);
 
         // 链接以太坊节点
-        $client = new EthereumClient([
+        $client = new Client([
             'base_uri' => $this->infura_endpoint,
             'timeout' => 30,
         ]);
