@@ -1,6 +1,6 @@
 {
   "name": "leftsky/eth_php",
-  "description": "以太坊便捷交易。php easy ethereum.",
+  "description": "以太坊和ERC20代币 快速交易",
   "authors": [
     {
       "name": "leftsky",
