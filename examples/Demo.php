@@ -13,9 +13,9 @@ use leftsky\eth\Wallet;
 // 创建钱包
 $wallet = new Wallet();
 // 主动设置钱包地址
-$wallet->address = '';
+//$wallet->address = '';
 // 导入钱包
-//$wallet = new Wallet("");
+//$wallet = new Wallet($prv_key);
 // 打印钱包地址
 echo "钱包地址：{$wallet->address}\n";
 // 打印钱包私钥
